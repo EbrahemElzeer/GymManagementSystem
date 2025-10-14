@@ -2,7 +2,7 @@
 {
     public class HealthRecord: BaseEntity
     {
-        public string weight { get; set; }
+        public decimal weight { get; set; }
         public decimal Height { get; set; }
 
         public string BloodType { get; set; }

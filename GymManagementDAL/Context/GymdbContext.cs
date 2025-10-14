@@ -12,7 +12,10 @@ namespace GymManagementDAL.Context
 {
     public class GymdbContext:DbContext
     {
-
+        public GymdbContext(DbContextOptions<GymdbContext> options):base(options)
+        {
+            
+        }
 
         public DbSet<Member> Members { get; set; }
         public DbSet<Plan> Plans { get; set; }
@@ -29,10 +32,10 @@ namespace GymManagementDAL.Context
 
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=.;Database=Gym;Trusted_Connection=True;TrustServerCertificate=True;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=.;Database=Gym;Trusted_Connection=True;TrustServerCertificate=True;");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

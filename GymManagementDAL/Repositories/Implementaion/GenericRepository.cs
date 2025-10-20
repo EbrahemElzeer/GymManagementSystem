@@ -19,17 +19,16 @@ namespace GymManagementDAL.Repositories.Implementaion
         {
             _dbContext = gymdbContext;
         }
-        public int Add(T entity)
+        public void Add(T entity)
         {
             _dbContext.Set<T>().Add(entity);
-            return _dbContext.SaveChanges();
+           
         }
 
-        public int Delete(T entity)
+        public void Delete(T entity)
         {
 
             _dbContext.Set<T>().Remove(entity);
-            return _dbContext.SaveChanges();
         }
 
 
@@ -42,10 +41,9 @@ namespace GymManagementDAL.Repositories.Implementaion
         public T? GetById(int id)=> _dbContext.Set<T>().Find(id);
 
 
-        public int Update(T entity)
+        public void Update(T entity)
         {
            _dbContext.Set<T>().Update(entity);
-            return _dbContext.SaveChanges();
         }
     }
 }

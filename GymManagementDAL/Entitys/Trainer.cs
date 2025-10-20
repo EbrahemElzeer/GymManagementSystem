@@ -5,6 +5,7 @@ namespace GymManagementPL.Entitys
     public class Trainer:GymUser
     {
         //hireDate==CreatedAt
+        public string ?Photo { get; set; }
         public Specialities Speciality { get; set; }
         public Address Address { get; set; }
 

@@ -1,5 +1,5 @@
 ﻿using ClassLibrary1GymManagementPLL.BusinessService.Interface;
-using ClassLibrary1GymManagementPLL.ViewModels.PlanVM.TrainerVM;
+using ClassLibrary1GymManagementPLL.ViewModels.TrainerVM;
 using GymManagementDAL.UnitOfWork;
 using GymManagementPL.Entitys;
 using System;
@@ -95,7 +95,7 @@ namespace ClassLibrary1GymManagementPLL.BusinessService.Implementaion
             {
                 Name = trainerData.Name,
                 Email = trainerData.Email,
-                Phone = trainerData.Photo,
+                Phone = trainerData.phone,
                 BuildNumber = trainerData.Address.BuildingNumber,
                 Street = trainerData.Address.Street,
                 City = trainerData.Address.City,
@@ -107,12 +107,13 @@ namespace ClassLibrary1GymManagementPLL.BusinessService.Implementaion
 
         public bool UpdateTrainerData(int TrainerId, TranierCreateViewModel updateTrainerData)
         {
-            if (IsEmailExist(updateTrainerData.Email) || IsPhoneExist(updateTrainerData.Phone))
-                return false;
-
+            var EmailExists = _unitOfWork.GetRepository<Trainer>().GetAll(t => t.Email == updateTrainerData.Email && t.Id != TrainerId).Any();
+            var phoneExists=_unitOfWork.GetRepository<Trainer>().GetAll(t=>t.phone==updateTrainerData.Phone&&t.Id != TrainerId).Any();
+            if (EmailExists || phoneExists) return false;
             var Trainer = _unitOfWork.GetRepository<Trainer>().GetById(TrainerId);
             if (Trainer is null) return false;
 
+            Trainer.Name = updateTrainerData.Name;
             Trainer.Email = updateTrainerData.Email;
             Trainer.phone = updateTrainerData.Phone;
             Trainer.Address.BuildingNumber = updateTrainerData.BuildNumber;

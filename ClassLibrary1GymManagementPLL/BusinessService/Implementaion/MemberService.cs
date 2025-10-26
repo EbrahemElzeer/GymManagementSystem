@@ -147,7 +147,7 @@ namespace ClassLibrary1GymManagementPLL.BusinessService.Implementaion
                 if (member is null) return false;
 
                 var hasActiveMembership = _unitOfWork.GetRepository<MemberSession>().GetAll(ms => ms.MemberId == id).Select(x => x.SessionId);
-                var hasSession = _unitOfWork.GetRepository<Session>().GetAll(s => hasActiveMembership.Contains(s.Id) && s.StartTime > DateTime.Now).Any();
+                var hasSession = _unitOfWork.GetRepository<Session>().GetAll(s => hasActiveMembership.Contains(s.Id) && s.StartDate > DateTime.Now).Any();
                 if (hasSession) return false;
 
                 var membership = _unitOfWork.GetRepository<MemberShip>().GetAll(m => m.memberId == id);

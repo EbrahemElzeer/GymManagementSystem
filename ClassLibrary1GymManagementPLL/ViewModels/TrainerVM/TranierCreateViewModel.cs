@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1GymManagementPLL.ViewModels.PlanVM.TrainerVM
+namespace ClassLibrary1GymManagementPLL.ViewModels.TrainerVM
 {
     public class TranierCreateViewModel
     {
@@ -25,6 +25,10 @@ namespace ClassLibrary1GymManagementPLL.ViewModels.PlanVM.TrainerVM
         [Phone(ErrorMessage = "Invalid Phone Number")]
         [RegularExpression(@"^(010|011\015)\d{8}$", ErrorMessage = "Phone number must start with 010, 011, or 015 and be 11 digits long")]
         public string Phone { get; set; } = null!;
+
+
+        [Required (ErrorMessage = "Speciality is Required")]
+        [EnumDataType (typeof(Specialities), ErrorMessage = "Invalid Speciality")]
         public Specialities Speciality { get; set; }
 
        

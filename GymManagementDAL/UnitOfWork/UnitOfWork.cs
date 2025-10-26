@@ -15,10 +15,16 @@ namespace GymManagementDAL.UnitOfWork
         private readonly Dictionary<Type,object> _repositories = new ();
         private readonly GymdbContext _gymdbContext;
 
-        public UnitOfWork(GymdbContext gymdbContext)
+        public UnitOfWork(GymdbContext gymdbContext, ISessionRepository SessionRepository)
         {
             _gymdbContext = gymdbContext;
+            SessionsRepository = SessionRepository;
         }
+
+     
+
+        public ISessionRepository SessionsRepository {  get; set; }
+
         public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity, new()
         {
             var entityType = typeof(TEntity);

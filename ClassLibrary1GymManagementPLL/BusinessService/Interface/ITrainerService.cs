@@ -1,4 +1,4 @@
-﻿using ClassLibrary1GymManagementPLL.ViewModels.PlanVM.TrainerVM;
+﻿using ClassLibrary1GymManagementPLL.ViewModels.TrainerVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;

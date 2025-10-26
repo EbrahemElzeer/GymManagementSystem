@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1GymManagementPLL.ViewModels.PlanVM.TrainerVM
+namespace ClassLibrary1GymManagementPLL.ViewModels.TrainerVM
 {
     public class GetTrainerDetailesViewModel
     {
